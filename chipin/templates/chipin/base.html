@@ -1,5 +1,4 @@
 {% load static %}
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,7 +12,7 @@
         </div>
         <div class="user-info">
             {% if request.user.is_authenticated %}
-                <span>{{ request.user.username }}</span>
+                <a href="{% url 'chipin:home' %}">Home</a> <span>{{ request.user.profile.nickname }}</span>
                 <form action="{% url 'users:logout' %}" method="post">
                     {% csrf_token %}
                     <button type="submit">Logout</button>
@@ -23,23 +22,18 @@
             {% endif %}
         </div>
     </header>
-
-    <!-- Messages Block -->
+    <!-- Messages block -->
     {% if messages %}
-        <div class="messages">
-            <ul>
-                {% for message in messages %}
-                    <li class="message {{ message.tags }}">{{ message }}</li>
-                {% endfor %}
-            </ul>
-        </div>
+        <ul class="messages">
+        {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+        </ul>
     {% endif %}
-
     <main>
         {% block content %}
         {% endblock %}
     </main>
-
     <footer>
         <p>&copy; 2024 ChipIn</p>
     </footer>
