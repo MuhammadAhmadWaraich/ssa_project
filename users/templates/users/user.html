@@ -7,10 +7,6 @@
     <div class="header">
         <div class="user-info">
             <span>{{ request.user.username }}</span>
-            <form action="{% url 'users:logout' %}" method="post">
-                {% csrf_token %}
-                <button type="submit">Log out</button>
-            </form>
         </div>
     </div> 
 
