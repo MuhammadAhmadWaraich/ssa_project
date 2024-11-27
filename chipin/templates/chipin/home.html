@@ -19,7 +19,7 @@
         {% else %}
             <p>No pending group invitations.</p>
         {% endif %}
-    </div>
+    </div> 
 
     <h2>Your Groups</h2>
     <ul>
@@ -37,7 +37,7 @@
         {% endfor %}
     </ul>
     <a href="{% url 'chipin:create_group' %}">Create a New Group</a>
-
+<p style: colour="yellow"></p>
     <h2>Your Join Requests</h2>
     <ul>
         {% for join_request in user_join_requests %}
